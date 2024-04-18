@@ -1,4 +1,3 @@
-
 class Deposito:
     def __init__(self,Nombre,CapacidadMax,Almacenado,PrecioAlmacenamiento,PrecioVenta):
         self.Nombre = Nombre
@@ -59,7 +58,42 @@ class Deposito:
         else:
             print("Su respuesta no es valida.")
 
+class Turno:
+    def __init__(self, Jornada, CantidadTrabajadores, SalarioPorHora):
+        self.Jornada = Jornada
+        self.CantidadTrabajadores = CantidadTrabajadores
+        self.SalarioPorHora = SalarioPorHora
 
+    def MostrarCantidadTrabajadores (self):
+        print("La cantidad de trabajadores en la jornada", self.Jornada, "es de", self.CantidadTrabajadores, "trabajadores")
+
+    def AgregarTrabajadores (self):
+        AgregarOperadores = int(input("Cuantos operadores desea agregar en la jornada", self.Jornada, "?"))
+        if AgregarOperadores >= 0:
+            self.CantidadTrabajadores = self.CantidadTrabajadores + AgregarOperadores
+            print("La cantidad de trabajadores en esta jornada es de:", self.CantidadTrabajadores)
+        else:
+            print("Agregue una cantidad valida")
+    
+    def RetirarTrabajadores (self):
+        RetirarOperadores = int(input("Cuantos operadores desea retirar en la jornada", self.Jornada, "?"))
+        if RetirarOperadores >= 0:
+            if self.CantidadTrabajadores > RetirarOperadores and self.CantidadTrabajadores - RetirarOperadores >= 1:
+                self.CantidadTrabajadores = self.CantidadTrabajadores - RetirarOperadores
+                print("La cantidad de trabajadores en esta jornada es de:", self.CantidadTrabajadores)
+            else:
+                print("Agregue una cantidad valida")
+    
+    def CalcularSalario (self):
+        Salario = self.CantidadTrabajadores * self.SalarioPorHora * 8
+        return Salario
+
+
+            
+#Jornadas
+JornadaDiurna = Turno("Diurna", 4, 14)
+JornadaVespertina = Turno("Vespertina", 4, 14.50)
+JornadaNocturna = Turno("Nocturna", 4, 15.50)
 
 #Crear depósitos
 DepositoRegular = Deposito("Regular", 80, 40, 7, 29) 
@@ -112,16 +146,25 @@ elif MenuNumero == 2:
 
 #Gestion de Turnos
 elif  MenuNumero == 3:
-    #Función por implementar, se mostrará la cantidad de empleados por jornada.
-    AgregarOperadores = int(input("Cuantos operadores desea agregar ?"))
-    #Asignar operadores a cada jornada.
-    EliminarOperadores = int(input("Cuantos operadores desea eliminar ?"))
-    #Desasignar operadores de cada jornada.
-    print(" Salario Total Jornada Diurna: ")
-    print(" Salario Total Jornada Vespertina: ")
-    print(" Salario Total Jornada Nocturna: ")
-    
-
+    JornadaDiurna.MostrarCantidadTrabajadores()
+    JornadaNocturna.MostrarCantidadTrabajadores()
+    JornadaVespertina.MostrarCantidadTrabajadores()
+    print("Modificación de jornadas: Agregar trabajadores")
+    JornadaDiurna.AgregarTrabajadores()
+    JornadaVespertina.AgregarTrabajadores()
+    JornadaNocturna.AgregarTrabajadores()
+    print("Modificación de jornadas: Retirar trabajadores")
+    JornadaDiurna.RetirarTrabajadores()
+    JornadaVespertina.RetirarTrabajadores()
+    JornadaNocturna.RetirarTrabajadores()
+    #Costo trabajadores
+    SalarioJornada = JornadaDiurna.CalcularSalario()
+    print("El salario total de la jornada diurna es de Q", SalarioJornada )
+    SalarioJornada = JornadaVespertina.CalcularSalario()
+    print("El salario total de la jornada vespertina es de Q", SalarioJornada  )
+    SalarioJornada = JornadaNocturna.CalcularSalario()
+    print("El salario total de la jornada nocturna es de Q", SalarioJornada  )
+  
 #Reporte de Rentabilidad
 elif MenuNumero == 4:
     #Función por implementar, gastos totales.
