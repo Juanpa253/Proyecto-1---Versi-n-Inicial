@@ -1,3 +1,7 @@
+#Juan Pablo Meléndez 1134224
+#Mario Andrés Sutuc 1176124
+
+
 class Deposito:
     def __init__(self,Nombre,CapacidadMax,Almacenado,PrecioAlmacenamiento,PrecioVenta):
         self.Nombre = Nombre
@@ -207,6 +211,9 @@ while Continuar == True:
         print("Costos Fijos:                       Q",CostosFijos)
         print("--------------------------------------------------------------")
         print("Utilidad Bruta:                     Q",UtilidadBruta)
+        print("")
+        print("")
+
 
     #Salida
     elif MenuNumero == 5:
