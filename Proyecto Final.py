@@ -82,7 +82,7 @@ class Turno:
         print("La cantidad de trabajadores en la jornada", self.Jornada, "es de", self.CantidadTrabajadores, "trabajadores")
 
     def AgregarTrabajadores (self):
-        AgregarOperadores = int(input("Cuantos operadores desea agregar en la jornada", self.Jornada, "?"))
+        AgregarOperadores = int(input("Cuantos operadores desea agregar en la jornada "+ self.Jornada + "?"))
         if AgregarOperadores >= 0:
             self.CantidadTrabajadores = self.CantidadTrabajadores + AgregarOperadores
             print("La cantidad de trabajadores en esta jornada es de:", self.CantidadTrabajadores)
@@ -90,7 +90,7 @@ class Turno:
             print("Agregue una cantidad valida")
     
     def RetirarTrabajadores (self):
-        RetirarOperadores = int(input("Cuantos operadores desea retirar en la jornada", self.Jornada, "?"))
+        RetirarOperadores = int(input("Cuantos operadores desea retirar en la jornada " + self.Jornada + "?"))
         if RetirarOperadores >= 0:
             if self.CantidadTrabajadores > RetirarOperadores and self.CantidadTrabajadores - RetirarOperadores >= 1:
                 self.CantidadTrabajadores = self.CantidadTrabajadores - RetirarOperadores
